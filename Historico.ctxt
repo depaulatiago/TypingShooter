@@ -1,0 +1,9 @@
+#BlueJ class context
+comment0.target=Historico
+comment1.params=
+comment1.target=Historico()
+comment2.params=nomePlayer\ pontos
+comment2.target=void\ setInfo(java.lang.String,\ int)
+comment3.params=
+comment3.target=void\ ordenarPontos()
+numComments=4
