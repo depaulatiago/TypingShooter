@@ -1,4 +1,4 @@
-import greenfoot.*; 
+import greenfoot.*;
 
 public class ImagemDeTexto extends Actor {
     public ImagemDeTexto(String texto) {

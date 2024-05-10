@@ -2,76 +2,74 @@ import greenfoot.*;
 import java.util.ArrayList;
 
 public class Inimigo extends Actor {
-    private String palavra;
-    private boolean estaDerrotado;
-    private boolean aguardandoRemocao;
-    private GreenfootImage imagemTexto;
-    private GreenfootImage imagemCombinada;
-    private int contadorInimigos;
-    private int contadorRemocao;
-    private Actor alvo;
-    private GreenfootSound somTiro;
-    private boolean jogoAcabou;
-    private ArrayList<String> palavras;
-    private boolean inimigoChegou;
-    
+    private String palavra; // A palavra associada ao inimigo
+    private boolean estaDerrotado; // Indica se o inimigo foi derrotado
+    private boolean aguardandoRemocao; // Indica se o inimigo está aguardando remoção
+    private GreenfootImage imagemTexto; // Imagem associada ao texto do inimigo
+    private GreenfootImage imagemCombinada; // Imagem combinada do inimigo
+    private int contadorInimigos; // Contador de inimigos
+    private int contadorRemocao; // Contador para remoção
+    private Actor alvo; // Alvo do inimigo
+    private GreenfootSound somTiro; // Som do tiro disparado pelo inimigo
+    private boolean jogoAcabou; // Indica se o jogo terminou
+    private ArrayList<String> palavras; // Lista de palavras associadas aos inimigos
+    private boolean inimigoChegou; // Indica se o inimigo chegou
+
+    // Construtor da classe Inimigo
     public Inimigo() {
         estaDerrotado = false;
         aguardandoRemocao = false;
         inimigoChegou = false;
         jogoAcabou = false;
-        
+
         somTiro = new GreenfootSound("rifle.wav");
         somTiro.setVolume(70);
 
         setImage(imagemCombinada);
-        
     }
-    
-        public void verificarColisao() {
-            if (!((Cenario) getWorld()).jogoAcabou()) {
-            Cenario mundo = (Cenario) getWorld();
-            Jogador jogador = mundo.getJogador();
-    
+
+    // Método para verificar colisão com o tiro do jogador
+    public void verificarColisao() {
+        if (!((Cenario) getWorld()).jogoAcabou()) {
+            Cenario cenario = (Cenario) getWorld();
+            Jogador jogador = cenario.getJogador();
+
             if (!estaDerrotado && Greenfoot.isKeyDown("enter") && jogador != null) {
                 String palavraDigitada = jogador.getPalavraDigitada();
                 if (palavraDigitada.equalsIgnoreCase(palavra)) {
                     estaDerrotado = true;
                     jogador.limparPalavraDigitada();
                     aguardandoRemocao = true;
-    
+
                     Tiro tiro = new Tiro(12, alvo);
-                    mundo.addObject(tiro, jogador.getX(), jogador.getY());
-    
+                    cenario.addObject(tiro, jogador.getX(), jogador.getY());
+
                     tiro.atirarPara(this);
                     somTiro.play();
-                    
-                    mundo.aumentarPontos(10);
+
+                    cenario.aumentarPontos(10);
                     jogador.turnTowards(getX(), getY());
                 }
             }
         }
     }
-    
+
+    // Método chamado a cada ato (quadro) do mundo
     public void act() {
         if (!((Cenario) getWorld()).jogoAcabou()) {
             setLocation(getX(), getY() + 1);
-            
+
             if (getY() == 705) {
                 // Chama o método na classe Cenário para encerrar o jogo
                 ((Cenario) getWorld()).encerrarJogo();
             }
-    
-            verificarColisao(); // Mova essa linha para dentro da verificação
+
+            verificarColisao(); // Verifica colisão com o tiro do jogador
         }
     }
 
-    
-    public boolean estaderrotado(){
-        return estaDerrotado;
-    }
+    // Métodos de acesso para os atributos privados
 
-    // faça um metodo de acesso para cada atributo prorivado
     public String getPalavra() {
         return palavra;
     }
@@ -94,7 +92,7 @@ public class Inimigo extends Actor {
 
     public int getContadorInimigos() {
         return contadorInimigos;
-    }   
+    }
 
     public int getContadorRemocao() {
         return contadorRemocao;
@@ -111,12 +109,12 @@ public class Inimigo extends Actor {
     public boolean isJogoAcabou() {
         return jogoAcabou;
     }
-    
-    public ArrayList<String> getArrayPalavras(){
+
+    public ArrayList<String> getArrayPalavras() {
         return palavras;
     }
 
-    //crie um metodo modificador para cada atributo privado
+    // Métodos modificadores para os atributos privados
 
     public void setPalavra(String palavra) {
         this.palavra = palavra;
@@ -161,7 +159,4 @@ public class Inimigo extends Actor {
     public void setPalavras(ArrayList<String> palavras) {
         this.palavras = palavras;
     }
-
-    
 }
-

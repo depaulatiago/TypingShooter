@@ -1,18 +1,9 @@
-import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 
-/**
- * Write a description of class CenarioDeserto here.
- * 
- * @author (your name) 
- * @version (a version number or a date)
- */
-public class CenarioDeserto extends Cenario
-{
-    private int pontos;
-    public CenarioDeserto(Historico historico)
-    {
-        super(historico);
+public class CenarioDeserto extends Cenario {
+    public CenarioDeserto(Historico historico, String nomePlayer) {
+        super(historico, true);
+        setNomePlayer(nomePlayer);
         setBackground("deserto.png");
-        addPontos(250);
     }
 }

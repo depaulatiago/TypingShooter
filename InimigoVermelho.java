@@ -1,6 +1,7 @@
 import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 import java.util.ArrayList;
 import java.util.Random;
+
 /**
  * Write a description of class InimigoVerde here.
  * 
@@ -9,9 +10,10 @@ import java.util.Random;
  */
 public class InimigoVermelho extends Inimigo {
     private ArrayList<String> palavras;
+
     public InimigoVermelho() {
         super();
-        
+
         palavras = new ArrayList<>();
         palavras.add("brincar");
         palavras.add("carro");
@@ -33,14 +35,14 @@ public class InimigoVermelho extends Inimigo {
         palavras.add("castelo");
         palavras.add("teclado");
 
-
         setEstaDerrotado(false);
         setAguardandoRemocao(false);
-        
+
         setPalavra(getPalavraAleatoria());
         Color vermelhoEscuro = new Color(150, 0, 0);
         setImagemTexto(new GreenfootImage(getPalavra(), 20, Color.WHITE, vermelhoEscuro, null));
-        GreenfootImage imagemInimigo = new GreenfootImage("zombievermelho.png");;
+        GreenfootImage imagemInimigo = new GreenfootImage("zombievermelho.png");
+        ;
 
         // Redimensione a imagem do inimigo
         int novaLargura = imagemInimigo.getWidth() / 6; // metade da largura original
@@ -49,11 +51,13 @@ public class InimigoVermelho extends Inimigo {
 
         // Cria uma nova imagem que é grande o suficiente para conter ambas as imagens
         setImagemCombinada(new GreenfootImage(Math.max(getImagemTexto().getWidth(), imagemInimigo.getWidth()),
-        getImagemTexto().getHeight() + imagemInimigo.getHeight()));
+                getImagemTexto().getHeight() + imagemInimigo.getHeight()));
 
         // Desenha a imagem do inimigo e o texto na imagem combinada
-        getImagemCombinada().drawImage(imagemInimigo, (getImagemCombinada().getWidth() - imagemInimigo.getWidth()) / 2, 0);
-        getImagemCombinada().drawImage(getImagemTexto(), (getImagemCombinada().getWidth() - getImagemTexto().getWidth()) / 2,
+        getImagemCombinada().drawImage(imagemInimigo, (getImagemCombinada().getWidth() - imagemInimigo.getWidth()) / 2,
+                0);
+        getImagemCombinada().drawImage(getImagemTexto(),
+                (getImagemCombinada().getWidth() - getImagemTexto().getWidth()) / 2,
                 imagemInimigo.getHeight());
 
         setSomTiro(new GreenfootSound("rifle.wav"));
@@ -64,7 +68,7 @@ public class InimigoVermelho extends Inimigo {
         setJogoAcabou(false);
     }
 
-    private String getPalavraAleatoria() { 
+    private String getPalavraAleatoria() {
         Random random = new Random();
         int indice = random.nextInt(palavras.size());
         return palavras.get(indice);

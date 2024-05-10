@@ -1,4 +1,4 @@
-import greenfoot.*; // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+import greenfoot.*;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -8,40 +8,40 @@ import java.util.Random;
  * @author (your name)
  * @version (a version number or a date)
  */
-public class InimigoVerde extends Inimigo {
+public class InimigoPreto extends Inimigo {
     private ArrayList<String> palavras;
 
-    public InimigoVerde() {
+    public InimigoPreto() {
         super();
         palavras = new ArrayList<>();
-        palavras.add("foca");
-        palavras.add("azul");
-        palavras.add("solto");
-        palavras.add("neve");
-        palavras.add("cafe");
-        palavras.add("pao");
-        palavras.add("flor");
-        palavras.add("chuva");
-        palavras.add("verde");
-        palavras.add("ceu");
-        palavras.add("bola");
-        palavras.add("gato");
-        palavras.add("cama");
-        palavras.add("teto");
-        palavras.add("uva");
-        palavras.add("luz");
-        palavras.add("bico");
-        palavras.add("frio");
-        palavras.add("pato");
-        palavras.add("voo");
+        palavras.add("love");
+        palavras.add("jump");
+        palavras.add("fish");
+        palavras.add("kite");
+        palavras.add("blue");
+        palavras.add("tree");
+        palavras.add("book");
+        palavras.add("song");
+        palavras.add("rain");
+        palavras.add("wolf");
+        palavras.add("moon");
+        palavras.add("game");
+        palavras.add("bird");
+        palavras.add("star");
+        palavras.add("road");
+        palavras.add("wind");
+        palavras.add("fire");
+        palavras.add("ship");
+        palavras.add("apple");
+        palavras.add("rock");
 
         setEstaDerrotado(false);
         setAguardandoRemocao(false);
 
         setPalavra(getPalavraAleatoria());
         Color verdeEscuro = new Color(0, 100, 0);
-        setImagemTexto(new GreenfootImage(getPalavra(), 20, Color.WHITE, verdeEscuro, null));
-        GreenfootImage imagemInimigo = new GreenfootImage("zombie.png");
+        setImagemTexto(new GreenfootImage(getPalavra(), 20, Color.WHITE, Color.BLACK, null));
+        GreenfootImage imagemInimigo = new GreenfootImage("zombiepreto.png");
 
         // Redimensione a imagem do inimigo
         int novaLargura = imagemInimigo.getWidth() / 6; // metade da largura original
@@ -67,7 +67,6 @@ public class InimigoVerde extends Inimigo {
         setJogoAcabou(false);
     }
 
-    // chama o game over caso o inimigo atinja o canto inferior
     // chama o game over caso o inimigo atinja o canto inferior
     public void act() {
         if (!((Cenario) getWorld()).jogoAcabou()) {
